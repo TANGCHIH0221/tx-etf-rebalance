@@ -143,7 +143,7 @@ d = d.with_columns(rhat=pl.col('I_1330') - pl.col('I_1325'), db_pre=(pl.col('p13
                    jump_1330=pl.col('p1330') - pl.col('p1329'), db_5=pl.col('p5') - pl.col('p1330'), db_15=pl.col('p1345') - pl.col('p1330'),
                    F_sgn=pl.col('r').sign() * pl.col('N').sqrt(), r_pts=pl.col('r') * pl.col('I'))
 P('## P3 擁擠度：Δbasis 對 r̂（13:25→13:30 收盤 surprise，指數點）與 sign(F)√N\n')
-P(f'有 13:25 指數的日子：{d["I_1325"].is_not_null().sum()}（下載中，之後補齊）。Δbasis_pre = (F_13:29:59 − I_close) − (F_13:25 − I_13:25)。13:30 後指數凍結，Δbasis = ΔF。\n')
+P(f'有 13:25 指數的日子：{d["I_1325"].is_not_null().sum()}（全部補齊）。Δbasis_pre = (F_13:29:59 − I_close) − (F_13:25 − I_13:25)。13:30 後指數凍結，Δbasis = ΔF。\n')
 P('| 被解釋 | 版本 | β(r̂) | t | β(sign F·√N) | t | n | R² |'); P('|---|---|---|---|---|---|---|---|')
 for yc, name in [('db_pre', '13:25→13:30 (進場前)'), ('jump_1330', '13:29:59→13:30:00'), ('db_5', '13:30→13:35'), ('db_15', '13:30→13:45')]:
     for lab, sub in [('全', d), ('排', d.filter(~pl.col('excl')))]:
